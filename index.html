@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title></title>
-  <style>
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      /* exactly two halves: left black, right white */
-      background: linear-gradient(90deg, #000 50%, #fff 50%);
-    }
-    .left {
-      position: fixed; left: 0; top: 0; bottom: 0; width: 50vw;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      color: #fff; padding: 2rem;
-    }
-    h1 { margin: 0 0 .5rem; font-size: clamp(40px, 8vw, 120px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; }
-    p  { margin: 0; font-size: clamp(16px, 2.5vw, 24px); }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<style>
+html, body { height: 100%; }
+body {
+margin: 0;
+/* exactly two halves: left black, right white */
+background: linear-gradient(90deg, #000 60%, #fff 40%);
+}
+.left {
+position: fixed; left: 0; top: 0; bottom: 0; width: 50vw;
+display: flex; align-items: center; justify-content: center; text-align: center;
+color: #fff; padding: 2rem;
+}
+h1 { margin: 0 0 .5rem; font-size: clamp(40px, 8vw, 100px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+p { margin: 0; font-size: clamp(16px, 2.5vw, 24px); }
+</style>
 </head>
 <body aria-label="Black/white split page">
-  <section class="left" aria-label="Message">
-    <div>
-      <h1>Welcome to out galaxy!</h1>
-      <p>Info soon</p>
-    </div>
-  </section>
+<section class="left" aria-label="Message">
+<div>
+<h1>Welcome to our galaxy!</h1>
+</div>
+</section>
 </body>
 </html>
