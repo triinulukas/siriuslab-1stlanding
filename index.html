@@ -3,166 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Welcome to our Galaxy</title>
-  <meta name="description" content="Welcome to our Galaxy — Info up soon." />
-  <meta property="og:title" content="Welcome to our Galaxy" />
-  <meta property="og:description" content="Info up soon." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0b0f1a" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <title></title>
   <style>
-    :root{
-      --bg-start:#0b0f1a; /* deep space */
-      --bg-end:#121b2f;   /* dusk blue */
-      --accent:#8be9fd;   /* electric cyan */
-      --accent-2:#bd93f9; /* soft violet */
-      --text:#e6eefc;
-      --muted:#9fb3d1;
-      --glow:0 0 40px rgba(139,233,253,.25), 0 0 80px rgba(189,147,249,.25);
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      /* exactly two halves: left black, right white */
+      background: linear-gradient(90deg, #000 50%, #fff 50%);
     }
-    html,body{height:100%;}
-    *{box-sizing:border-box}
-    body{
-      margin:0; 
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1000px 800px at 80% 10%, #1c2540 0%, transparent 60%),
-                  radial-gradient(800px 600px at 10% 90%, #1a1f35 0%, transparent 55%),
-                  linear-gradient(180deg,var(--bg-start),var(--bg-end));
-      overflow:hidden;
+    .left {
+      position: fixed; left: 0; top: 0; bottom: 0; width: 50vw;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: #fff; padding: 2rem;
     }
-
-    /* Subtle starfield layers */
-    .stars, .stars2, .stars3{
-      position:fixed; inset:0; pointer-events:none; background-repeat:repeat; animation: drift 120s linear infinite;
-    }
-    .stars{background-image:radial-gradient(2px 2px at 20px 30px,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 50%),
-                               radial-gradient(1px 1px at 120px 80px,rgba(255,255,255,.6) 0,rgba(255,255,255,0) 50%),
-                               radial-gradient(1.5px 1.5px at 220px 130px,rgba(255,255,255,.75) 0,rgba(255,255,255,0) 50%);
-           background-size:200px 200px; opacity:.5;}
-    .stars2{background-image:radial-gradient(1.2px 1.2px at 40px 60px,rgba(255,255,255,.85) 0,rgba(255,255,255,0) 50%),
-                               radial-gradient(1px 1px at 160px 140px,rgba(255,255,255,.6) 0,rgba(255,255,255,0) 50%),
-                               radial-gradient(1.3px 1.3px at 260px 20px,rgba(255,255,255,.7) 0,rgba(255,255,255,0) 50%);
-           background-size:260px 260px; opacity:.35; animation-duration:160s;}
-    .stars3{background-image:radial-gradient(1px 1px at 80px 50px,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 50%),
-                               radial-gradient(1px 1px at 180px 170px,rgba(255,255,255,.45) 0,rgba(255,255,255,0) 50%),
-                               radial-gradient(1px 1px at 260px 90px,rgba(255,255,255,.5) 0,rgba(255,255,255,0) 50%);
-           background-size:320px 320px; opacity:.25; animation-duration:200s;}
-    @keyframes drift{ from{transform:translateY(0)} to{transform:translateY(-200px)} }
-
-    .wrap{
-      position:relative; z-index:2; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
-    }
-
-    .card{
-      width:min(940px,92vw);
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(8,12,22,.6);
-      backdrop-filter: blur(12px) saturate(130%);
-      border-radius:28px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.35), var(--glow);
-      padding: clamp(24px, 6vw, 56px);
-      text-align:center;
-    }
-
-    .logo{
-      display:inline-flex; align-items:center; justify-content:center; gap:12px; margin-bottom:12px;
-      font-family:"Space Grotesk",Inter,system-ui; font-weight:700; letter-spacing:.5px; text-transform:uppercase; font-size:14px; color:var(--muted);
-    }
-    .logo-mark{
-      width:36px; height:36px; border-radius:50%;
-      background: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
-      box-shadow: 0 0 24px rgba(139,233,253,.35);
-      position:relative; isolation:isolate;
-    }
-    .logo-mark::after{ /* tiny orbit line */
-      content:""; position:absolute; inset:-6px; border-radius:inherit; border:1px dashed rgba(255,255,255,.12);
-      filter:blur(.2px);
-    }
-
-    h1{
-      margin: 10px 0 8px; font-family:"Space Grotesk",Inter,system-ui; font-size: clamp(36px, 6vw, 72px);
-      line-height:1.05; letter-spacing:-.02em;
-      background: linear-gradient(90deg, var(--text), #fff 30%, var(--accent) 70%, var(--accent-2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      text-shadow: 0 2px 24px rgba(139,233,253,.15);
-    }
-
-    .subtitle{
-      margin:0 auto; max-width: 56ch; color:var(--muted); font-size: clamp(16px, 2.2vw, 20px); line-height:1.6;
-    }
-
-    /* pill */
-    .pill{ display:inline-flex; align-items:center; gap:10px; margin: 10px auto 22px; padding:8px 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); color:#cfe7ff; font-size:12px; text-transform:uppercase; letter-spacing:.12em; }
-    .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
-
-    /* footer */
-    footer{ margin-top:28px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; color:#9db2d0; font-size:14px; }
-    footer a{ color:#cfe7ff; text-decoration:none; border-bottom:1px dotted rgba(207,231,255,.45); }
-    footer a:hover{ opacity:.9; }
-
-    /* optional email capture placeholder (non-functional) */
-    .row{ margin-top:26px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-    input[type=email]{
-      width:min(420px, 86vw); padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.25); outline:none; color:var(--text); font-size:16px;
-    }
-    button{
-      padding:14px 18px; border-radius:14px; border:1px solid rgba(255,255,255,.14); cursor:pointer; font-weight:600; letter-spacing:.02em;
-      background: linear-gradient(90deg, rgba(139,233,253,.15), rgba(189,147,249,.15)); color:var(--text);
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    button:hover{ transform: translateY(-1px); box-shadow: var(--glow); }
-
-    /* tiny corner credit you can safely remove */
-    .credit{ position:fixed; right:12px; bottom:10px; opacity:.5; font-size:12px; }
-
-    /* accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .stars,.stars2,.stars3{ animation:none; }
-      button{ transition:none }
-    }
+    h1 { margin: 0 0 .5rem; font-size: clamp(40px, 8vw, 120px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; }
+    p  { margin: 0; font-size: clamp(16px, 2.5vw, 24px); }
   </style>
 </head>
-<body>
-  <div class="stars" aria-hidden="true"></div>
-  <div class="stars2" aria-hidden="true"></div>
-  <div class="stars3" aria-hidden="true"></div>
-
-  <main class="wrap">
-    <section class="card" role="region" aria-label="Welcome">
-      <div class="logo" aria-label="Brand">
-        <span class="logo-mark" aria-hidden="true"></span>
-        <span>Galaxy</span>
-      </div>
-      <div class="pill"><span class="dot" aria-hidden="true"></span> Launching soon</div>
-      <h1>Welcome to our Galaxy!</h1>
-      <p class="subtitle">Info up soon. We’re crafting something stellar — check back shortly.</p>
-
-      <!-- Optional email form (static placeholder). Replace with your provider if needed. -->
-      <div class="row">
-        <input type="email" placeholder="your@email.com" aria-label="Email address" />
-        <button type="button" aria-label="Notify me">Notify me</button>
-      </div>
-
-      <footer>
-        <span>&copy; <span id="y"></span> Galaxy</span>
-        <span>·</span>
-        <a href="#" aria-label="Contact">contact@yourdomain.tld</a>
-        <span>·</span>
-        <a href="#" aria-label="Privacy">Privacy</a>
-      </footer>
-    </section>
-  </main>
-
-  <div class="credit">You can remove this note.</div>
-
-  <script>
-    // set year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+<body aria-label="Black/white split page">
+  <section class="left" aria-label="Message">
+    <div>
+      <h1>Welcome to out galaxy!</h1>
+      <p>Info soon</p>
+    </div>
+  </section>
 </body>
 </html>
